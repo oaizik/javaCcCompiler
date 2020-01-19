@@ -40,6 +40,15 @@ public class CLangDefaultVisitor implements CLangVisitor{
   public Object visit(ASTIfStatementDef node, Object data){
     return defaultVisit(node, data);
   }
+  public Object visit(ASTWhileStatementDef node, Object data){
+    return defaultVisit(node, data);
+  }
+  public Object visit(ASTForStatementDef node, Object data){
+    return defaultVisit(node, data);
+  }
+  public Object visit(ASTreturnStatmentDef node, Object data){
+    return defaultVisit(node, data);
+  }
   public Object visit(ASTexpressionDef node, Object data){
     return defaultVisit(node, data);
   }
@@ -77,4 +86,4 @@ public class CLangDefaultVisitor implements CLangVisitor{
     return defaultVisit(node, data);
   }
 }
-/* JavaCC - OriginalChecksum=27ba461da4b813a9a2e24085e9c9942c (do not edit this line) */
+/* JavaCC - OriginalChecksum=5f7d749dec20c61484ace38fc11c0642 (do not edit this line) */

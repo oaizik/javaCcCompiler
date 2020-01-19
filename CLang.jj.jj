@@ -22,7 +22,10 @@ TOKEN : {
     <IF:   "if"  >                      |
     <#INT: "int" >                      |
     <#CHAR: "char" >                    |
-    <#VOID: "void" >                    
+    <#VOID: "void" >                    |
+    <WHILE: "while">                   |
+    <FOR: "for">                       |
+    <RETURN: "return">
 }
 
 TOKEN: {
@@ -354,7 +357,10 @@ void StatementDef() : {/*@bgen(jjtree) StatementDef */
 /*@egen*/
     varDefineDef() <SEMICOLON> |
     expressionDef() <SEMICOLON> |
-    IfStatementDef()/*@bgen(jjtree)*/
+    IfStatementDef()<SEMICOLON> |
+    WhileStatementDef()|
+    ForStatementDef()|
+    returnStatmentDef() <SEMICOLON>/*@bgen(jjtree)*/
     } catch (Throwable jjte000) {
       if (jjtc000) {
         jjtree.clearNodeScope(jjtn000);
@@ -410,7 +416,103 @@ void IfStatementDef() : {/*@bgen(jjtree) IfStatementDef */
     }
 /*@egen*/
 }
+void WhileStatementDef() : {/*@bgen(jjtree) WhileStatementDef */
+  ASTWhileStatementDef jjtn000 = new ASTWhileStatementDef(JJTWHILESTATEMENTDEF);
+  boolean jjtc000 = true;
+  jjtree.openNodeScope(jjtn000);
+  jjtn000.jjtSetFirstToken(getToken(1));
+/*@egen*/}
+{/*@bgen(jjtree) WhileStatementDef */
+    try {
+/*@egen*/
+    <WHILE> <LRBRACKET> expressionDef() <RRBRACKET> (StatementBlockDef() | StatementDef())/*@bgen(jjtree)*/
+    } catch (Throwable jjte000) {
+      if (jjtc000) {
+        jjtree.clearNodeScope(jjtn000);
+        jjtc000 = false;
+      } else {
+        jjtree.popNode();
+      }
+      if (jjte000 instanceof RuntimeException) {
+        throw (RuntimeException)jjte000;
+      }
+      if (jjte000 instanceof ParseException) {
+        throw (ParseException)jjte000;
+      }
+      throw (Error)jjte000;
+    } finally {
+      if (jjtc000) {
+        jjtree.closeNodeScope(jjtn000, true);
+        jjtn000.jjtSetLastToken(getToken(0));
+      }
+    }
+/*@egen*/
+}
+void ForStatementDef() : {/*@bgen(jjtree) ForStatementDef */
+  ASTForStatementDef jjtn000 = new ASTForStatementDef(JJTFORSTATEMENTDEF);
+  boolean jjtc000 = true;
+  jjtree.openNodeScope(jjtn000);
+  jjtn000.jjtSetFirstToken(getToken(1));
+/*@egen*/}
+{/*@bgen(jjtree) ForStatementDef */
+    try {
+/*@egen*/
+    <FOR> <LRBRACKET> varDefineDef() <SEMICOLON> expressionDef() <SEMICOLON> assignExpressionDef() <RRBRACKET> (StatementBlockDef() | StatementDef())/*@bgen(jjtree)*/
+    } catch (Throwable jjte000) {
+      if (jjtc000) {
+        jjtree.clearNodeScope(jjtn000);
+        jjtc000 = false;
+      } else {
+        jjtree.popNode();
+      }
+      if (jjte000 instanceof RuntimeException) {
+        throw (RuntimeException)jjte000;
+      }
+      if (jjte000 instanceof ParseException) {
+        throw (ParseException)jjte000;
+      }
+      throw (Error)jjte000;
+    } finally {
+      if (jjtc000) {
+        jjtree.closeNodeScope(jjtn000, true);
+        jjtn000.jjtSetLastToken(getToken(0));
+      }
+    }
+/*@egen*/
+}
 
+void returnStatmentDef() : {/*@bgen(jjtree) returnStatmentDef */
+  ASTreturnStatmentDef jjtn000 = new ASTreturnStatmentDef(JJTRETURNSTATMENTDEF);
+  boolean jjtc000 = true;
+  jjtree.openNodeScope(jjtn000);
+  jjtn000.jjtSetFirstToken(getToken(1));
+/*@egen*/}
+{/*@bgen(jjtree) returnStatmentDef */
+    try {
+/*@egen*/
+    <RETURN> [expressionDef()]/*@bgen(jjtree)*/
+    } catch (Throwable jjte000) {
+      if (jjtc000) {
+        jjtree.clearNodeScope(jjtn000);
+        jjtc000 = false;
+      } else {
+        jjtree.popNode();
+      }
+      if (jjte000 instanceof RuntimeException) {
+        throw (RuntimeException)jjte000;
+      }
+      if (jjte000 instanceof ParseException) {
+        throw (ParseException)jjte000;
+      }
+      throw (Error)jjte000;
+    } finally {
+      if (jjtc000) {
+        jjtree.closeNodeScope(jjtn000, true);
+        jjtn000.jjtSetLastToken(getToken(0));
+      }
+    }
+/*@egen*/
+}
 void expressionDef() : {/*@bgen(jjtree) expressionDef */
   ASTexpressionDef jjtn000 = new ASTexpressionDef(JJTEXPRESSIONDEF);
   boolean jjtc000 = true;
@@ -639,7 +741,7 @@ void binaryBoolExpressionCompareDef() : {/*@bgen(jjtree) binaryBoolExpressionCom
 {/*@bgen(jjtree) binaryBoolExpressionCompareDef */
     try {
 /*@egen*/
-    addExpressionDef() [ binaryBoolOperatorCompareDef() binaryBoolOperatorCompareDef() ]/*@bgen(jjtree)*/
+    addExpressionDef() [ binaryBoolOperatorCompareDef() binaryBoolExpressionCompareDef() ]/*@bgen(jjtree)*/
     } catch (Throwable jjte000) {
       if (jjtc000) {
         jjtree.clearNodeScope(jjtn000);
@@ -762,7 +864,6 @@ void unaryExpressionDef() : {/*@bgen(jjtree) unaryExpressionDef */
       }
     }
 /*@egen*/
-
 }
 
 void constExpressionDef() : {/*@bgen(jjtree) constExpressionDef */

@@ -19,61 +19,67 @@ public interface CLangConstants {
   /** RegularExpression Id. */
   int VOID = 11;
   /** RegularExpression Id. */
-  int ID = 12;
+  int WHILE = 12;
   /** RegularExpression Id. */
-  int NUMBER = 13;
+  int FOR = 13;
   /** RegularExpression Id. */
-  int CHAR_VALUE = 14;
+  int RETURN = 14;
   /** RegularExpression Id. */
-  int LETTER = 15;
+  int ID = 15;
   /** RegularExpression Id. */
-  int DIGIT = 16;
+  int NUMBER = 16;
   /** RegularExpression Id. */
-  int ZERO = 17;
+  int CHAR_VALUE = 17;
   /** RegularExpression Id. */
-  int LRBRACKET = 18;
+  int LETTER = 18;
   /** RegularExpression Id. */
-  int RRBRACKET = 19;
+  int DIGIT = 19;
   /** RegularExpression Id. */
-  int COMMA = 20;
+  int ZERO = 20;
   /** RegularExpression Id. */
-  int LCBRACKET = 21;
+  int LRBRACKET = 21;
   /** RegularExpression Id. */
-  int RCBRACKET = 22;
+  int RRBRACKET = 22;
   /** RegularExpression Id. */
-  int SEMICOLON = 23;
+  int COMMA = 23;
   /** RegularExpression Id. */
-  int ASSIGN = 24;
+  int LCBRACKET = 24;
   /** RegularExpression Id. */
-  int APSOTREPHE = 25;
+  int RCBRACKET = 25;
   /** RegularExpression Id. */
-  int EQ = 26;
+  int SEMICOLON = 26;
   /** RegularExpression Id. */
-  int LT = 27;
+  int ASSIGN = 27;
   /** RegularExpression Id. */
-  int LTE = 28;
+  int APSOTREPHE = 28;
   /** RegularExpression Id. */
-  int GT = 29;
+  int EQ = 29;
   /** RegularExpression Id. */
-  int GTE = 30;
+  int LT = 30;
   /** RegularExpression Id. */
-  int NOT = 31;
+  int LTE = 31;
   /** RegularExpression Id. */
-  int NEQ = 32;
+  int GT = 32;
   /** RegularExpression Id. */
-  int AND = 33;
+  int GTE = 33;
   /** RegularExpression Id. */
-  int OR = 34;
+  int NOT = 34;
   /** RegularExpression Id. */
-  int ADD = 35;
+  int NEQ = 35;
   /** RegularExpression Id. */
-  int SUB = 36;
+  int AND = 36;
   /** RegularExpression Id. */
-  int MUL = 37;
+  int OR = 37;
   /** RegularExpression Id. */
-  int DIV = 38;
+  int ADD = 38;
   /** RegularExpression Id. */
-  int MOD = 39;
+  int SUB = 39;
+  /** RegularExpression Id. */
+  int MUL = 40;
+  /** RegularExpression Id. */
+  int DIV = 41;
+  /** RegularExpression Id. */
+  int MOD = 42;
 
   /** Lexical state. */
   int DEFAULT = 0;
@@ -92,6 +98,9 @@ public interface CLangConstants {
     "\"int\"",
     "\"char\"",
     "\"void\"",
+    "\"while\"",
+    "\"for\"",
+    "\"return\"",
     "<ID>",
     "<NUMBER>",
     "<CHAR_VALUE>",

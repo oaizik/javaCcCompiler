@@ -13,6 +13,9 @@ public interface CLangVisitor
   public Object visit(ASTStatementBlockDef node, Object data);
   public Object visit(ASTStatementDef node, Object data);
   public Object visit(ASTIfStatementDef node, Object data);
+  public Object visit(ASTWhileStatementDef node, Object data);
+  public Object visit(ASTForStatementDef node, Object data);
+  public Object visit(ASTreturnStatmentDef node, Object data);
   public Object visit(ASTexpressionDef node, Object data);
   public Object visit(ASTassignExpressionDef node, Object data);
   public Object visit(ASTboolExpressionDef node, Object data);
@@ -26,4 +29,4 @@ public interface CLangVisitor
   public Object visit(ASTunaryExpressionDef node, Object data);
   public Object visit(ASTconstExpressionDef node, Object data);
 }
-/* JavaCC - OriginalChecksum=7005642e5f726df622e116fe83012638 (do not edit this line) */
+/* JavaCC - OriginalChecksum=f64ff4420b115e6601c17a6989934546 (do not edit this line) */

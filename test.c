@@ -1,4 +1,9 @@
-const int x;
-int x = 3;
-// x = 5;
-// y = 5;
+int test(int x)
+{
+    if( x < 5)
+    {
+        int y;
+    }
+
+    yufhjgfg = 5 ;
+}

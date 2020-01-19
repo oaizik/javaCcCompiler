@@ -18,7 +18,10 @@ TOKEN : {
     <IF:   "if"  >                      |
     <#INT: "int" >                      |
     <#CHAR: "char" >                    |
-    <#VOID: "void" >                    
+    <#VOID: "void" >                    |
+    <WHILE: "while">                   |
+    <FOR: "for">                       |
+    <RETURN: "return">
 }
 
 TOKEN: {
@@ -105,14 +108,29 @@ void StatementDef() : {}
 {
     varDefineDef() <SEMICOLON> |
     expressionDef() <SEMICOLON> |
-    IfStatementDef()
+    IfStatementDef()<SEMICOLON> |
+    WhileStatementDef()|
+    ForStatementDef()|
+    returnStatmentDef() <SEMICOLON>
 }
 
 void IfStatementDef() : {}
 {
     <IF> <LRBRACKET> expressionDef() <RRBRACKET> (StatementBlockDef() | StatementDef())
 }
+void WhileStatementDef() : {}
+{
+    <WHILE> <LRBRACKET> expressionDef() <RRBRACKET> (StatementBlockDef() | StatementDef())
+}
+void ForStatementDef() : {}
+{
+    <FOR> <LRBRACKET> varDefineDef() <SEMICOLON> expressionDef() <SEMICOLON> assignExpressionDef() <RRBRACKET> (StatementBlockDef() | StatementDef())
+}
 
+void returnStatmentDef() : {}
+{
+    <RETURN> [expressionDef()]
+}
 void expressionDef() : {}
 {
     LOOKAHEAD(assignExpressionDef()) assignExpressionDef() |
@@ -152,7 +170,7 @@ void binaryBoolOperatorCompareDef() : {}
 
 void binaryBoolExpressionCompareDef() : {}
 {
-    addExpressionDef() [ binaryBoolOperatorCompareDef() binaryBoolOperatorCompareDef() ]
+    addExpressionDef() [ binaryBoolOperatorCompareDef() binaryBoolExpressionCompareDef() ]
 }
 
 void addExpressionDef() : {}
@@ -170,7 +188,6 @@ void unaryExpressionDef() : {}
     <NOT> unaryExpressionDef()                  |
     <LRBRACKET> expressionDef() <RRBRACKET>     |
     constExpressionDef()
-
 }
 
 void constExpressionDef() : {}
